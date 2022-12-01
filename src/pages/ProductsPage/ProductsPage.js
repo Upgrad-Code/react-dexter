@@ -13,18 +13,17 @@ const ProductsPage = () => {
       try {
         dispatch({
           type: ACTIONS.FETCH_START,
-          payload: { data: true },
         });
         const data = await getJSON(PRODUCTS_API_URL);
         const products = [...data.products];
         dispatch({
           type: ACTIONS.FETCH_SUCCESS,
-          payload: { data: products },
+          payload: products,
         });
       } catch (err) {
         dispatch({
           type: ACTIONS.FETCH_ERROR,
-          payload: { data: err },
+          payload: err,
         });
       }
     })();
