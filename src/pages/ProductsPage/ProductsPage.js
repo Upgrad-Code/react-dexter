@@ -15,10 +15,9 @@ const ProductsPage = () => {
           type: ACTIONS.FETCH_START,
         });
         const data = await getJSON(PRODUCTS_API_URL);
-        const products = [...data.products];
         dispatch({
           type: ACTIONS.FETCH_SUCCESS,
-          payload: products,
+          payload: [...data.products],
         });
       } catch (err) {
         dispatch({

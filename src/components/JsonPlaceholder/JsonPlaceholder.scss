@@ -3,4 +3,12 @@
     text-transform: capitalize;
     margin-right: 15px;
   }
+  .content {
+    padding: 15px;
+    height: 200px;
+    background: #efefef;
+    margin-top: 20px;
+    font-size: 12px;
+    overflow-y: scroll;
+  }
 }
