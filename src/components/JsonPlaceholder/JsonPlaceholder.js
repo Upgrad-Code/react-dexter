@@ -2,16 +2,24 @@ import React, { useReducer, useEffect } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { ACTIONS } from '../../actions/actions';
 import { reducer, iState } from '../../reducers/JsonPlaceholderReducer';
-import { getJson } from '../../helpers/helperFns';
+import { getJSON } from '../../helpers/helperFns';
+import { JSONPLACEHOLDER_API_URL } from '../../helpers/config';
 import './JsonPlaceholder.scss';
 
 const JsonPlaceholder = () => {
   const [state, dispatch] = useReducer(reducer, iState);
-  const { pram } = state;
-  console.log(pram);
+  const { pram, data } = state;
 
   useEffect(() => {
-    (async () => {})();
+    (async () => {
+      try {
+        dispatch({ type: ACTIONS.FETCH_START });
+        const data = await getJSON(`${JSONPLACEHOLDER_API_URL}/${pram}`);
+        dispatch({ type: ACTIONS.FETCH_SUCCESS, payload: data });
+      } catch (err) {
+        dispatch({ type: ACTIONS.FETCH_ERROR, payload: err });
+      }
+    })();
   }, [pram]);
 
   return (
@@ -39,7 +47,9 @@ const JsonPlaceholder = () => {
             </Button>
           </Col>
           <Col md={12}>
-            <div className="content">{state.data}</div>
+            <div className="content">
+              <p>{JSON.stringify(data)}</p>
+            </div>
           </Col>
         </Row>
       </Container>

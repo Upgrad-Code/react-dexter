@@ -7,14 +7,14 @@ export const iState = {
   pram: 'posts',
 };
 
-export const JsonPlaceholderReducer = (state, action) => {
+export const reducer = (state, action) => {
   switch (action.type) {
     case ACTIONS.FETCH_START:
-      return null;
+      return { ...state, isLoading: true };
     case ACTIONS.FETCH_SUCCESS:
-      return null;
+      return { ...state, data: action.payload, isLoading: false };
     case ACTIONS.FETCH_ERROR:
-      return null;
+      return { ...state, isError: action.payload, isLoading: false };
     case 'default':
       return state;
   }

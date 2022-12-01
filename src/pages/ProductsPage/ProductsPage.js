@@ -27,7 +27,6 @@ const ProductsPage = () => {
         });
       }
     })();
-
     return () => {
       console.log('Component will unMount...');
     };
