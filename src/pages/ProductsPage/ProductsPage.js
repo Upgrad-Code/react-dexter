@@ -6,7 +6,7 @@ import { getJSON } from '../../helpers/helperFns';
 
 const ProductsPage = () => {
   const [state, dispatch] = useReducer(reducer, iState);
-  console.log(state);
+  console.log(state.products);
 
   useEffect(() => {
     (async () => {
@@ -27,6 +27,10 @@ const ProductsPage = () => {
         });
       }
     })();
+
+    return () => {
+      console.log('Component will unMount...');
+    };
   }, []);
 
   return null;
