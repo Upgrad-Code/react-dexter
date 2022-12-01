@@ -52,6 +52,7 @@ const JsonPlaceholder = () => {
           </Col>
           <Col md={12}>
             <div className="content">
+              <h1 className="text-center text-uppercase">{pram}</h1>
               <p>{JSON.stringify(data)}</p>
             </div>
           </Col>
