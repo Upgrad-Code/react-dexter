@@ -9,13 +9,13 @@ export const iState = {
 export const reducer = (state, action) => {
   switch (action.type) {
     case ACTIONS.FETCH_START: {
-      return null;
+      return { ...state, isLoading: action.payload.data };
     }
     case ACTIONS.FETCH_SUCCESS: {
-      return null;
+      return { ...state, isLoading: false, products: action.payload.data };
     }
     case ACTIONS.FETCH_ERROR: {
-      return null;
+      return { ...state, isLoading: false, isError: action.payload.data };
     }
     case 'default':
       return state;
