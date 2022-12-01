@@ -15,6 +15,8 @@ export const reducer = (state, action) => {
       return { ...state, data: action.payload, isLoading: false };
     case ACTIONS.FETCH_ERROR:
       return { ...state, isError: action.payload, isLoading: false };
+    case ACTIONS.UPDATE_PRAM:
+      return { ...state, pram: action.payload };
     case 'default':
       return state;
   }

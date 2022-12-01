@@ -22,8 +22,8 @@ const JsonPlaceholder = () => {
     })();
   }, [pram]);
 
-  const handleJson = (e) => {
-    return dispatch({ type: e.target.name });
+  const handlePram = (e) => {
+    return dispatch({ type: ACTIONS.UPDATE_PRAM, payload: e.target.name });
   };
 
   return (
@@ -31,22 +31,22 @@ const JsonPlaceholder = () => {
       <Container>
         <Row>
           <Col md={12}>
-            <Button variant="dark" onClick={} name="posts">
+            <Button variant="dark" onClick={handlePram} name="posts">
               posts
             </Button>
-            <Button variant="dark" onClick={} name="comments">
+            <Button variant="dark" onClick={handlePram} name="comments">
               comments
             </Button>
-            <Button variant="dark" onClick={} name="albums">
+            <Button variant="dark" onClick={handlePram} name="albums">
               albums
             </Button>
-            <Button variant="dark" onClick={} name="photos">
+            <Button variant="dark" onClick={handlePram} name="photos">
               photos
             </Button>
-            <Button variant="dark" onClick={} name="todos">
+            <Button variant="dark" onClick={handlePram} name="todos">
               todos
             </Button>
-            <Button variant="dark" onClick={} name="users">
+            <Button variant="dark" onClick={handlePram} name="users">
               users
             </Button>
           </Col>
