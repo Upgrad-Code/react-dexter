@@ -1,5 +1,5 @@
 import React, { useReducer, useEffect } from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col, Button, Alert } from 'react-bootstrap';
 import { ACTIONS } from '../../actions/actions';
 import { reducer, iState } from '../../reducers/JsonPlaceholderReducer';
 import { getJSON } from '../../helpers/helperFns';
@@ -53,11 +53,18 @@ const JsonPlaceholder = () => {
           </Col>
           <Col md={12}>
             <div className="content">
-              {/* {
-                isLoading ? 
-              } */}
-              <h1 className="text-center text-uppercase">{pram}</h1>
-              <p>{JSON.stringify(data)}</p>
+              {isLoading ? (
+                <LoadingSpinner />
+              ) : isError ? (
+                <Alert key="danger" variant="danger">
+                  This is a 'danger' alert—check it out!
+                </Alert>
+              ) : (
+                <>
+                  <h1 className="text-center text-uppercase">{pram}</h1>
+                  <p>{JSON.stringify(data)}</p>
+                </>
+              )}
             </div>
           </Col>
         </Row>
