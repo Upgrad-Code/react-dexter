@@ -4,11 +4,12 @@ import { ACTIONS } from '../../actions/actions';
 import { reducer, iState } from '../../reducers/JsonPlaceholderReducer';
 import { getJSON } from '../../helpers/helperFns';
 import { JSONPLACEHOLDER_API_URL } from '../../helpers/config';
+import { LoadingSpinner } from '../LoadingSpinner/LoadingSpinner';
 import './JsonPlaceholder.scss';
 
 const JsonPlaceholder = () => {
   const [state, dispatch] = useReducer(reducer, iState);
-  const { pram, data } = state;
+  const { isLoading, data, isError, pram } = state;
 
   useEffect(() => {
     (async () => {
@@ -52,6 +53,9 @@ const JsonPlaceholder = () => {
           </Col>
           <Col md={12}>
             <div className="content">
+              {/* {
+                isLoading ? 
+              } */}
               <h1 className="text-center text-uppercase">{pram}</h1>
               <p>{JSON.stringify(data)}</p>
             </div>
